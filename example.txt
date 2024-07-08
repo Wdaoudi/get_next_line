@@ -1,4 +1,4 @@
-This is the first line.
-This is the second line.
-This is the third line.
+This is the first \n line.
+This \n is the second line.
+This is the \n third line.
 And this is the fourth line.

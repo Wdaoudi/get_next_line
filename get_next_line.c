@@ -5,47 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 20:11:39 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/07/08 20:50:51 by wdaoudi-         ###   ########.fr       */
+/*   Created: 2024/06/26 20:11:39 by wdaoudi-          #+#    #+#             */
+/*   Updated: 2024/07/08 21:15:28 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-char	*ft_line(char *s)
+char	*ft_line(char *string)
 {
 	int		i;
 	char	*tmp;
 
 	i = 0;
-	if (!s[i])
+	if (!string[i])
 		return (NULL);
-	while (s[i] && s[i] != '\n')
+	while (string[i] && string[i] != '\n')
 		i++;
-	tmp = ft_substr(s, 0, i + 1);
+	tmp = ft_substr(string, 0, i + 1);
 	return (tmp);
 }
 
-char	*ft_save(char *s)
+char	*ft_save(char *string)
 {
 	int		i;
 	char	*tmp;
 
 	i = 0;
-	while (s[i] && s[i] != '\n')
+	while (string[i] && string[i] != '\n')
 		i++;
-	if (!s[i])
+	if (!string[i])
 	{
-		free(s);
+		free(string);
 		return (NULL);
 	}
-	tmp = ft_substr(s, i + 1, ft_strlen(s));
-	free(s);
+	tmp = ft_substr(string, i + 1, ft_strlen(string));
+	free(string);
 	return (tmp);
 }
 
-char	*ft_read_fd(int fd, char *s)
+char	*ft_read_fd(int fd, char *string)
 {
 	char	*buffer;
 	int		res;
@@ -54,30 +54,30 @@ char	*ft_read_fd(int fd, char *s)
 	if (!buffer)
 		return (NULL);
 	res = 1;
-	while (!ft_strchr(s, '\n') && res != 0)
+	while (!ft_strchr(string, '\n') && res != 0)
 	{
 		res = read(fd, buffer, BUFFER_SIZE);
 		if (res == -1)
 			return (free(buffer), NULL);
 		buffer[res] = '\0';
-		s = ft_strjoin(s, buffer);
+		string = ft_strjoin(string, buffer);
 	}
 	free(buffer);
-	return (s);
+	return (string);
 }
 
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*s;
+	static char	*string;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024 || read(fd, 0, 0) < 0)
 		return (NULL);
-	s = ft_read_fd(fd, s);
-	if (!s)
+	string = ft_read_fd(fd, string);
+	if (!string)
 		return (NULL);
-	line = ft_line(s);
-	s = ft_save(s);
+	line = ft_line(string);
+	string = ft_save(string);
 	return (line);
 }
 
@@ -94,7 +94,7 @@ char	*get_next_line(int fd)
 // 	}
 // 	while ((line = get_next_line(fd)) != NULL)
 // 	{
-// 		printf("%s", line);
+// 		printf("%string", line);
 // 		free(line);
 // 	}
 // 	if (close(fd) == -1)
