@@ -6,11 +6,11 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 20:11:39 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/07/09 18:21:17 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/07/09 18:24:43 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 
 char	*ft_line(char *string)
