@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 20:11:39 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/07/08 21:57:58 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/07/09 18:10:06 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	*ft_read_fd(int fd, char *string)
 	{
 		res = read(fd, buffer, BUFFER_SIZE);
 		if (res == -1)
-			return (free(buffer), NULL);
+			return (free(buffer), free(string), NULL);
 		buffer[res] = '\0';
 		string = ft_strjoin(string, buffer);
 	}
@@ -71,7 +71,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	static char	*string;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024 || read(fd, 0, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
 	string = ft_read_fd(fd, string);
 	if (!string)
