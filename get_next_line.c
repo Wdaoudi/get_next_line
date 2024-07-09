@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 20:11:39 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/07/09 18:10:06 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/07/09 18:11:21 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,3 @@ char	*get_next_line(int fd)
 	string = ft_save(string);
 	return (line);
 }
-
-// int	main(void)
-// {
-// 	int fd;
-// 	char *line;
-
-// 	fd = open("example.txt", O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		perror("Error opening file");
-// 		return (1);
-// 	}
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("%string", line);
-// 		free(line);
-// 	}
-// 	if (close(fd) == -1)
-// 	{
-// 		perror("Error closing file");
-// 		return (1);
-// 	}
-// 	return (0);
-// }
